@@ -7,3 +7,11 @@ body {
 body {
   margin: 0;
 }
+
+.selected {
+  background-color: red;
+}
+
+a {
+  cursor: pointer;
+}

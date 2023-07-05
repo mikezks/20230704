@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FlightService } from './flight-search/flight.service';
+import { Component, inject } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FlightSearchComponent } from "./flight-search/flight-search.component";
@@ -16,6 +17,14 @@ import { FlightSearchComponent } from "./flight-search/flight-search.component";
 })
 export class AppComponent {
   title = 'Hello Angular! :)';
+  private flightService = inject(FlightService);
+
+  constructor() {
+    this.flightService.find('Frankfurt', 'Zürich')
+      .subscribe(
+        flights => console.log(flights)
+      );
+  }
 
   changeTitle(): void {
     this.title = 'Hello Michael!';

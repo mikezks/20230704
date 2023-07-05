@@ -20,7 +20,7 @@ export class FlightCardComponent implements OnInit, OnDestroy {
 
   toggleSelection(): void {
     this.selected = !this.selected;
-    this.selectedChange.emit(this.selected);
+    this.selectedChange.next(this.selected);
   }
 
   ngOnDestroy(): void {

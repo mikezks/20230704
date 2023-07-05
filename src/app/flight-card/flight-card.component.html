@@ -2,6 +2,7 @@
 <div class="card" [ngClass]="{ selected }">
   <div class="card-header">
     <h2 class="card-title">{{ item.from }} - {{ item.to }}</h2>
+    <ng-content></ng-content>
   </div>
 
   <div class="card-body">
@@ -12,6 +13,7 @@
       <button (click)="toggleSelection()" class="btn btn-default">
         {{ selected ? 'Remove' : 'Select' }}
       </button>
+      <ng-content select=".action-area"></ng-content>
     </p>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <p>flight-card works!</p>
-<div class="card" [ngStyle]="{ 'background-color': selected ? 'lightsteelblue' : 'white' }">
+<div class="card" [ngClass]="{ selected }">
   <div class="card-header">
     <h2 class="card-title">{{ item.from }} - {{ item.to }}</h2>
   </div>

@@ -2,6 +2,10 @@
   background-color: moccasin;
 }
 
+.card.selected {
+  background-color: rgb(204, 197, 185);
+}
+
 a {
   cursor: pointer;
 }

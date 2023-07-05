@@ -1,16 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Flight } from '../model/flight';
-import { CityPipe } from "../shared/city.pipe";
+import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
+import { CityPipe } from "../shared/city.pipe";
+import { NextFlightsModule } from "../next-flights/next-flights.module";
 
 @Component({
     selector: 'app-flight-search',
     standalone: true,
     templateUrl: './flight-search.component.html',
     styleUrls: ['./flight-search.component.css'],
-    imports: [CommonModule, FormsModule, CityPipe]
+    imports: [CommonModule, FormsModule, CityPipe, NextFlightsModule]
 })
 export class FlightSearchComponent {
   from = 'London';

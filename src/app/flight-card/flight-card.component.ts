@@ -28,7 +28,9 @@ export class FlightCardComponent implements OnInit, OnDestroy {
 
   edit() {
     this.dialog.open(FlightEditComponent, {
-      data: { flight: { ...this.item } }
+      data: { flight: { ...this.item } },
+      minWidth: '70%',
+      panelClass: 'edit-dialog'
     });
   }
 

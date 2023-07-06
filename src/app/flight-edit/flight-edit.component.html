@@ -1,69 +1,77 @@
-<div class="header">
-  <h2 class="title">Flight Edit</h2>
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Flight Edit</h2>
+  </div>
+
+  <mat-dialog-content>
+    <div class="card-body">
+      <form #editForm="ngForm">
+        <div class="form-group">
+          <label>ID:</label>
+          <input
+            [(ngModel)]="data.flight.id" name="id"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label>From:</label>
+          <input
+            [(ngModel)]="data.flight.from" name="from"
+            class="form-control"
+            required
+            minlength="3"
+            [city]="['Graz', 'Londoner']"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm?.controls?.['from']?.hasError('required')">
+          Please enter a value for form field from - this is mandatory.
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm?.controls?.['from']?.hasError('city')">
+          Please enter a valid city name:<br>
+          {{ editForm?.controls?.['from']?.errors?.['city'].validCities.join(', ') }}
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm?.controls?.['from']?.errors">
+          <pre>{{
+            editForm?.controls?.['from']?.errors | json
+          }}</pre>
+        </div>
+        <div class="form-group">
+          <label>To:</label>
+          <input
+            [(ngModel)]="data.flight.to" name="to"
+            class="form-control"
+            required
+            minlength="3"
+            [city]="['Wien', 'Hamburg']"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm?.controls?.['to']?.hasError('city')">
+          Please enter a valid city name:<br>
+          {{ editForm?.controls?.['to']?.errors?.['city'].validCities.join(', ') }}
+        </div>
+        <div class="form-group">
+          <label>Date:</label>
+          <input [(ngModel)]="data.flight.date" name="date" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <button
+            (click)="save()"
+            class="btn btn-default"
+            [disabled]="!editForm?.valid"
+          >Save</button>
+        </div>
+      </form>
+
+    </div>
+  </mat-dialog-content>
+
 </div>
-
-<form #editForm="ngForm">
-  <div class="form-group">
-    <label>ID:</label>
-    <input
-      [(ngModel)]="data.flight.id" name="id"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <label>From:</label>
-    <input
-      [(ngModel)]="data.flight.from" name="from"
-      class="form-control"
-      required
-      minlength="3"
-      [city]="['Graz', 'Londoner']"
-    />
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="editForm?.controls?.['from']?.hasError('required')">
-    Please enter a value for form field from - this is mandatory.
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="editForm?.controls?.['from']?.hasError('city')">
-    Please enter a valid city name:<br>
-    {{ editForm?.controls?.['from']?.errors?.['city'].validCities.join(', ') }}
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="editForm?.controls?.['from']?.errors">
-    <pre>{{
-      editForm?.controls?.['from']?.errors | json
-    }}</pre>
-  </div>
-  <div class="form-group">
-    <label>To:</label>
-    <input
-      [(ngModel)]="data.flight.to" name="to"
-      class="form-control"
-      required
-      minlength="3"
-      [city]="['Wien', 'Hamburg']"
-    />
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="editForm?.controls?.['to']?.hasError('city')">
-    Please enter a valid city name:<br>
-    {{ editForm?.controls?.['to']?.errors?.['city'].validCities.join(', ') }}
-  </div>
-  <div class="form-group">
-    <label>Date:</label>
-    <input [(ngModel)]="data.flight.date" name="date" class="form-control" />
-  </div>
-
-  <div class="form-group">
-    <button
-      (click)="save()"
-      class="btn btn-default"
-      [disabled]="!editForm?.valid"
-    >Save</button>
-  </div>
-</form>

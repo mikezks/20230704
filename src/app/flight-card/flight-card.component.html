@@ -13,6 +13,10 @@
       <button (click)="toggleSelection()" class="btn btn-default">
         {{ selected ? 'Remove' : 'Select' }}
       </button>
+      <button
+        class="btn btn-default action-area"
+        (click)="edit()"
+      >Edit</button>
       <ng-content select=".action-area"></ng-content>
     </p>
   </div>

@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { NextFlightsComponent } from "./next-flights/next-flights.component";
-import { FlightEditComponent } from "./flight-edit/flight-edit.component";
 
 export const APP_ROUTES: Routes = [
   {
@@ -19,14 +18,11 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'flight-search',
-    loadComponent: () => import('./flight-search/flight-search.component'),
+    loadComponent: () => import('./flight-booking/flight-search/flight-search.component')
+      .then(esm => esm.FlightSearchComponent),
     data: {
       label: 'Flights'
     }
-  },
-  {
-    path: 'flight-edit/:id',
-    component: FlightEditComponent
   },
   {
     path: 'flight-next',

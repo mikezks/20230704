@@ -5,7 +5,7 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" name="from" class="form-control" />
+    <input [ngModel]="from()" (ngModelChange)="from.set($event)" name="from" class="form-control" />
   </div>
   <div class="form-group">
     <label>To:</label>
@@ -16,6 +16,9 @@
     <button (click)="search()" class="btn btn-default">Search</button>
   </div>
 </form>
+
+<p>{{ flightRoute() }}</p>
+<p>{{ fromDebounce() }}</p>
 
 <div class="row">
   <div

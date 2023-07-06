@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Flight, initialFlight } from '../model/flight';
+import { Flight, initialFlight } from '../../../../../src/app/model/flight';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { FlightEditComponent } from '../flight-edit/flight-edit.component';
-import { FlightReactiveEditComponent } from '../flight-reactive-edit/flight-reactive-edit.component';
+import { FlightEditComponent } from '../../../../../src/app/flight-edit/flight-edit.component';
+import { FlightReactiveEditComponent } from '../../../../../src/app/flight-reactive-edit/flight-reactive-edit.component';
 
 @Component({
   selector: 'app-flight-card',

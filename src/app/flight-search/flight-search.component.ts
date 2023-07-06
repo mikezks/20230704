@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,8 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
-export class FlightSearchComponent {
+export default class FlightSearchComponent implements OnInit {
+  @Input() label = '';
   from = 'London';
   to = 'Paris';
   flights: Array<Flight> = [];
@@ -26,6 +27,10 @@ export class FlightSearchComponent {
   };
 
   private flightService = inject(FlightService);
+
+  ngOnInit(): void {
+    console.log(this.label);
+  }
 
   search(): void {
     // Reset properties

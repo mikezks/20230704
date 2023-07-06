@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,7 @@ import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit
 @Component({
   selector: 'app-flight-card',
   standalone: true,
-  imports: [CommonModule, CityPipe, StatusToggleComponent],
+  imports: [CommonModule, RouterLink, CityPipe, StatusToggleComponent],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
 })

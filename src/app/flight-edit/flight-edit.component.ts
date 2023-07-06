@@ -8,6 +8,7 @@ import { ValidationErrorsComponent } from '../shared/validation-errors/validatio
 import { CityValidatorDirective } from '../shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from '../shared/validation/async-city-validator.directive';
 import { RoundtripValidatorDirective } from '../shared/validation/roundtrip-validator.directive';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-flight-edit',
@@ -24,18 +25,24 @@ import { RoundtripValidatorDirective } from '../shared/validation/roundtrip-vali
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent {
-  dialogRef = inject(MatDialogRef);
-  data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
+  route = inject(ActivatedRoute);
+  id = 0;
+  showDetails = false;
+  flight: Flight = {
+    id: 333,
+    from: 'San Francisco',
+    to: 'Miami',
+    date: new Date().toISOString(),
+    delayed: true
+  };
 
-  /* 
-    Alternative: 
-    type FlightData = { flight: Flight };
-    data = inject<FlightData>(MAT_DIALOG_DATA);
-  */
-
-  flight = this.data.flight;
-
-  close(): void {
-    this.dialogRef.close();
+  constructor() {
+    this.route.paramMap.subscribe(
+      params => {
+        this.id = +(params.get('id') || 0);
+        this.showDetails = params.get('showDetails')?.toLocaleLowerCase() === 'true';
+        this.flight.id = this.id;
+      }
+    );
   }
 }

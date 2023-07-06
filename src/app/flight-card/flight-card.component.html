@@ -22,8 +22,10 @@
       <button (click)="deselect()" *ngIf="selected" class="btn btn-default">
         Remove
       </button>
-
-      <button (click)="edit()" class="btn btn-default">Edit</button>
+      <a
+        [routerLink]="['/flight-edit', item.id, { showDetails: true }]"
+        class="btn btn-default"
+      >Edit</a>
     </p>
     <ng-content select=".bottom"></ng-content>
   </div>

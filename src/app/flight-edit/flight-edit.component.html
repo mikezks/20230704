@@ -17,12 +17,19 @@
       class="form-control"
       required
       minlength="3"
+      [city]="['Graz', 'Londoner']"
     />
   </div>
   <div
     class="alert alert-danger"
     *ngIf="editForm?.controls?.['from']?.hasError('required')">
     Please enter a value for form field from - this is mandatory.
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="editForm?.controls?.['from']?.hasError('city')">
+    Please enter a valid city name:<br>
+    {{ editForm?.controls?.['from']?.errors?.['city'].validCities.join(', ') }}
   </div>
   <div
     class="alert alert-danger"
@@ -38,7 +45,14 @@
       class="form-control"
       required
       minlength="3"
+      [city]="['Wien', 'Hamburg']"
     />
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="editForm?.controls?.['to']?.hasError('city')">
+    Please enter a valid city name:<br>
+    {{ editForm?.controls?.['to']?.errors?.['city'].validCities.join(', ') }}
   </div>
   <div class="form-group">
     <label>Date:</label>

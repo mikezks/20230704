@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Flight, initialFlight } from '../model/flight';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FlightEditComponent } from '../flight-edit/flight-edit.component';
+import { FlightReactiveEditComponent } from '../flight-reactive-edit/flight-reactive-edit.component';
 
 @Component({
   selector: 'app-flight-card',
@@ -27,7 +28,7 @@ export class FlightCardComponent implements OnInit, OnDestroy {
   }
 
   edit() {
-    this.dialog.open(FlightEditComponent, {
+    this.dialog.open(FlightReactiveEditComponent, {
       data: { flight: { ...this.item } },
       minWidth: '70%',
       panelClass: 'edit-dialog'

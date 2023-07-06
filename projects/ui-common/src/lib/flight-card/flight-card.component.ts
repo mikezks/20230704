@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Flight, initialFlight } from '../../../../../src/app/model/flight';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FlightEditComponent } from '../../../../../src/app/flight-edit/flight-edit.component';
 import { FlightReactiveEditComponent } from '../../../../../src/app/flight-reactive-edit/flight-reactive-edit.component';
+import { CONFIG } from '../config';
 
 @Component({
   selector: 'app-flight-card',
@@ -14,12 +15,16 @@ import { FlightReactiveEditComponent } from '../../../../../src/app/flight-react
 })
 export class FlightCardComponent implements OnInit, OnDestroy {
   private dialog = inject(MatDialog);
+  private config = inject(CONFIG);
+  private injector = inject(Injector);
   @Input() item: Flight = initialFlight;
   @Input() selected = false;
   @Output() selectedChange = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     console.log('Flight Card INIT');
+    console.log(this.config);
+    this.injector.get(CONFIG);
   }
 
   toggleSelection(): void {
